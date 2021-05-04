@@ -58,6 +58,24 @@ class LinkedList {
     push(value) {
         this.insertAtTheBeginning(value)
     }
+    enqueue(value) {
+        this.insertAtTheBeginning(value)
+    }
+    dequeue() {
+        if (!this.head) {
+            return null
+        }
+        if (this.tail) {
+            let currentNode = this.head
+
+            while (currentNode) {
+                if (currentNode.next.next === null) {
+                    currentNode.next = null
+                }
+                currentNode = currentNode.next
+            }
+        }
+    }
     peek() {
         return this.head.value
     }
@@ -130,9 +148,7 @@ ll.insertAfter('15', '16')
 ll.insertAfter('15', '16')
 console.log(ll.listToArray())
 
-// ll.deleteValue('10')
-// ll.deleteValue('8')
-// ll.deleteValue('12')
+ll.dequeue()
 console.log(ll.listToArray())
 console.log(ll.find('15'))
 console.log(ll.countDataOccurences())
